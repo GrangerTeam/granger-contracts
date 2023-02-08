@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package disease_service.service.v1;
+
+message Disease {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+service DiseaseService {
+  rpc GetDisease(GetDiseaseRequest) returns (GetDiseaseResponse);
+}
+
+message GetDiseaseRequest {
+  bytes bytes = 1;
+}
+
+message GetDiseaseResponse {
+  repeated Disease disease = 1;
+}

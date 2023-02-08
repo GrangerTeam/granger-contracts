@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package file_service.service.v1;
+
+option go_package = "granger_services/file_service/v1;proto_file_service";
+
+message File {
+  string id = 1;
+  string name = 2;
+  bytes bytes = 3;
+}
+service FileService {
+  rpc GetFile(GetFileRequest) returns (GetFileResponse);
+
+  rpc SaveFile(SaveFileRequest) returns (SaveFileResponse);
+}
+
+message GetFileRequest {
+  optional string name = 1;
+}
+
+message GetFileResponse {
+  repeated File file = 1;
+}
+
+message SaveFileRequest {
+  string name = 1;
+  bytes bytes = 2;
+}
+
+message SaveFileResponse {
+  repeated File file = 1;
+}
